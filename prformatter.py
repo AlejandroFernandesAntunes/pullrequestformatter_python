@@ -77,33 +77,43 @@ def printHelp():
     print('dr - remove reviewer.')
     print('an - add note.')
     print('dn - delete note.')
-    print('an - add note.')
     print('risk - add risk.')
     print('rr - reset risk.')
     print('exit - imagine what this will do...')
     print('--------------------------------------------------------')
 
 
-def printResult():
-    print('##' + title)
+def printResult(final):
+    if final:
+        print('Copy the result below and paste it into github as usual')
+        print('           ')
+    print('## ' + title)
+    print('  ')
     print('#### Trello board reference:')
     print("* [Trello Card #"+str(trelloCardNumber)+"]("+str(trelloLink)+")")
+    print('  ')
     print(' --- ')
+    print('  ')
     print ('#### Description:')
     print ('*' + description)
     print(' --- ')
+    print('  ')
     print ('#### Reviewers:')
     for reviewer in reviewers: print '*' + reviewer
     print(' --- ')
+    print('  ')
     print ('#### Notes:')
     for note in notes: print '*' + note
     print(' --- ')
+    print('  ')
     print ('#### Tasks:')
     for task in tasks: print task
     print(' --- ')
+    print('  ')
     print ('#### Risk:')
     print (risk)
     print(' --- ')
+    print('  ')
     print ('#### Preview:')
     print ('* N/A')
 
@@ -112,7 +122,7 @@ while True:
     print('# type exit to end.')
     _userInput = raw_input('instruction? ')
     if _userInput == 'exit':
-        printResult()
+        printResult(True)
         break
     else:
         for key, currentValue in _instrustionsWhitelist.items():
@@ -130,7 +140,7 @@ while True:
                 if key == 'see how it is going':
                     clear = False
                     while not clear:
-                        printResult()
+                        printResult(False)
                         clearInput = raw_input('shall we continue? (y/n): ')
                         if clearInput == 'y':
                             clear = True
