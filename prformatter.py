@@ -77,33 +77,48 @@ def printHelp():
     print('dr - remove reviewer.')
     print('an - add note.')
     print('dn - delete note.')
-    print('an - add note.')
     print('risk - add risk.')
     print('rr - reset risk.')
     print('exit - imagine what this will do...')
     print('--------------------------------------------------------')
 
 
-def printResult():
-    print('##' + title)
+def printResult(final):
+    if final:
+        print('Copy the result below and paste it into github as usual')
+        print('           ')
+    print('## ' + title)
+    print('  ')
     print('#### Trello board reference:')
     print("* [Trello Card #"+str(trelloCardNumber)+"]("+str(trelloLink)+")")
+    print("\n")
     print(' --- ')
+    print("\n")
     print ('#### Description:')
-    print ('*' + description)
+    print ('* ' + description)
+    print("\n")
     print(' --- ')
+    print("\n")
     print ('#### Reviewers:')
-    for reviewer in reviewers: print '*' + reviewer
+    for reviewer in reviewers: print '* ' + reviewer
+    print("\n")
     print(' --- ')
+    print("\n")
     print ('#### Notes:')
     for note in notes: print '*' + note
+    print("\n")
     print(' --- ')
+    print("\n")
     print ('#### Tasks:')
     for task in tasks: print task
+    print("\n")
     print(' --- ')
+    print("\n")
     print ('#### Risk:')
     print (risk)
+    print("\n")
     print(' --- ')
+    print("\n")
     print ('#### Preview:')
     print ('* N/A')
 
@@ -112,7 +127,7 @@ while True:
     print('# type exit to end.')
     _userInput = raw_input('instruction? ')
     if _userInput == 'exit':
-        printResult()
+        printResult(True)
         break
     else:
         for key, currentValue in _instrustionsWhitelist.items():
@@ -130,7 +145,7 @@ while True:
                 if key == 'see how it is going':
                     clear = False
                     while not clear:
-                        printResult()
+                        printResult(False)
                         clearInput = raw_input('shall we continue? (y/n): ')
                         if clearInput == 'y':
                             clear = True
@@ -216,4 +231,4 @@ while True:
                             print 'there are only ' + str(len(risks)) + ' and you want to remove number ' + str(_userInput) + '! be serious...'
 
                 if key == 'delete risk':
-                    resetRisk()
+                    risk = ''
