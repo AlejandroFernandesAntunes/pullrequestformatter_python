@@ -226,4 +226,4 @@ while True:
                             print 'there are only ' + str(len(risks)) + ' and you want to remove number ' + str(_userInput) + '! be serious...'
 
                 if key == 'delete risk':
-                    resetRisk()
+                    risk = ''
