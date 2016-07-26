@@ -95,11 +95,11 @@ def printResult(final):
     print(' --- ')
     print('  ')
     print ('#### Description:')
-    print ('*' + description)
+    print ('* ' + description)
     print(' --- ')
     print('  ')
     print ('#### Reviewers:')
-    for reviewer in reviewers: print '*' + reviewer
+    for reviewer in reviewers: print '* ' + reviewer
     print(' --- ')
     print('  ')
     print ('#### Notes:')
